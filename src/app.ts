@@ -1,23 +1,20 @@
-import Fastify from "fastify";
+import Fastify, { type FastifyServerOptions } from "fastify";
 import cors from "@fastify/cors";
+import { getCorsOrigin } from "./config.js";
 import { analyzeRoutes } from "./routes/analyze.js";
+import { healthRoutes } from "./routes/health.js";
 
-export function buildApp() {
+export function buildApp(options: FastifyServerOptions = {}) {
   const app = Fastify({
-    logger: true
+    logger: options.logger ?? true
   });
 
-  // Enable CORS for frontend integration
   app.register(cors, {
-    origin: true
+    origin: getCorsOrigin()
   });
 
-  // Register endpoints
+  app.register(healthRoutes);
   app.register(analyzeRoutes);
-
-  app.get("/health", async () => {
-    return { status: "OK", service: "wizard-api" };
-  });
 
   return app;
 }

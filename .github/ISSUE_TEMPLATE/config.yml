@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Wizard UI
+    url: https://github.com/Drip-Forge/wizard-ui/issues
+    about: Dashboard / wallet / FUNDING.json download bugs
+  - name: Wizard contracts
+    url: https://github.com/Drip-Forge/wizard-contracts/issues
+    about: Solidity, Foundry, Drips splits
+  - name: Drips docs
+    url: https://docs.drips.network/
+    about: Protocol and claim-process questions
