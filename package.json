@@ -2,15 +2,23 @@
   "name": "wizard-api",
   "version": "1.0.0",
   "private": true,
+  "description": "Fastify analysis service that turns package.json into a Drips FUNDING.json manifest and suggested on-chain splits.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
-    "dev": "tsx watch src/index.ts",
-    "start": "node dist/index.js"
+    "build": "node init && tsc",
+    "dev": "node init && tsx watch src/index.ts",
+    "start": "node init && node dist/index.js",
+    "test": "tsx --test test/analyze.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "dependencies": {
     "@fastify/cors": "^9.0.1",
+    "dotenv": "^8.2.0",
     "fastify": "^4.26.2",
+    "node-fetch": "^3.3.2",
     "zod": "^3.22.4"
   },
   "devDependencies": {
